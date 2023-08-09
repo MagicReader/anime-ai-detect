@@ -1,4 +1,4 @@
-import gradio as gr
+import gradio
 from transformers import pipeline
 
 detection_pipeline = pipeline("image-classification", "saltacc/anime-ai-detect")
@@ -12,5 +12,5 @@ def detect(img):
     return final
 
 
-iface = gr.Interface(fn=detect, inputs=gr.Image(type="pil"), outputs=gr.Label(label="result"))
-iface.launch()
+iface = gradio.Interface(fn=detect, inputs=gradio.Image(type="pil"), outputs=gradio.Label(label="result"))
+iface.launch(server_name="0.0.0.0" , port=7865)
